@@ -25,15 +25,25 @@
                         <button class="btn btn-primary" id="search-button" type="button">Search</button>
                     </div>
                 </div>
-                <button class="btn btn-info m-3 text-muted" id="clear-history" type="button" >Clear history</button>
+                <button class="btn btn-info text-muted" id="clear-history" type="button" >Clear history</button>
                 <form id="history"></form>
             </div>
+
+            <!-- Daily Stats -->
+            <div class="col-12 col-lg-9">
+                <div class="col-lg-5 card m-3 d-none bg-info" id="todays-weather">
+                    <div class="card-body">
+                        <h3 class="city-name align-middle" id="city-name" ></h3>
+                        <img id="weather-picture" alt="weather icon">
+                        <p id="dsec"></p>
+                        <p id="temp"></p>
+                        <p id="humid"></p>
+                        <p id="wind"></p>
+                        <p id="uv"></p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <!-- Daily Stats -->
-    <div id="today" class="bg-dark">
-
     </div>
     
 </body>
