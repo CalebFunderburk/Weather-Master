@@ -9,26 +9,32 @@
     <title>Weather Dashboard</title>
 </head>
 <body>
-    <!-- Title -->
-    <div class="title text-center text-light bg-dark">
+    <!-- Header -->
+    <header class="text-center text-light bg-dark">
         <h1>Weather Dashboard</h1>
-    </div>
+    </header>
 
     <!-- Search -->
-    <div class="container">
-        <div class="col-3 mb-3 justify-content-start">
-            <h2>Search for a City:</h2>
-        </div>
-        <div class="col-3 mb-3">
-            <input type="text" class="form-control">
-        </div>
-        <div class="col-3 d-grid gap-2">
-            <button class="btn btn-primary" type="submit">Search</button>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-lg-3">
+                <h2>Search for a City:</h2>
+                <div class="input-group mb-3">
+                    <input type="text" id="city-search" class="form-control" placeholder="Enter a city name">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" id="search-button" type="button">Search</button>
+                    </div>
+                </div>
+                <button class="btn btn-info m-3 text-muted" id="clear-history" type="button" >Clear history</button>
+                <form id="history"></form>
+            </div>
         </div>
     </div>
 
     <!-- Daily Stats -->
-    
+    <div id="today" class="bg-dark">
+
+    </div>
     
 </body>
 </html>
