@@ -29,7 +29,7 @@ const formHandler = (event) => {
     } else {
 
         getCurrent(citySearch)
-        getForecast(citySearch)
+        // getForecast(citySearch)
 
         cityArray.push(citySearch)
         localStorage.setItem('citySearch', JSON.stringify(cityArray))
@@ -43,7 +43,27 @@ const clickHandler = (event) => {
     const cityHistory = event.surrentTarget.textContent
 
     getCurrent(cityHistory)
-    getForecast(cityHistory)
+    // getForecast(cityHistory)
+
+}
+
+// API Fetch request for current weather
+const getCurrent = (citySearch) => {
+
+    const key = '3cc750875e9720f210c3ade16c226b21'
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${citySearch}&appid=${key}&units=imperial`
+
+    fetch(url)
+        .then((res) => {
+            if (!res.ok) {
+                alert('Error' + res.statusText)
+            } else {
+                res.json()
+                    .then((data) => {
+                        console.log(data)
+                    })
+            }
+        })
 
 }
 
