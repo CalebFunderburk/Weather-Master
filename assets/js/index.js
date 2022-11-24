@@ -40,7 +40,7 @@ const formHandler = (event) => {
 // Handler for clicking cities in search history
 const clickHandler = (event) => {
 
-    const cityHistory = event.surrentTarget.textContent
+    const cityHistory = event.currentTarget.textContent
 
     getCurrent(cityHistory)
     // getForecast(cityHistory)
@@ -60,10 +60,23 @@ const getCurrent = (citySearch) => {
             } else {
                 res.json()
                     .then((data) => {
-                        console.log(data)
+                        displayCurrent(data, citySearch)
                     })
             }
         })
+        .catch((err) => {
+            console.log(err)
+        })
+
+}
+
+// cityUv function goes here
+
+const displayCurrent = (data, citySearch) => {
+    console.log(citySearch)
+    console.log(data)
+
+    
 
 }
 
