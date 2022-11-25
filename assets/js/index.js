@@ -7,6 +7,7 @@ timeDisplay.textContent = currentTime.format("dddd MMMM Do, YYYY h:mm a")
 const searchBtn = document.getElementById('search-button')
 const clearBtn = document.getElementById('clear-history')
 const history = document.getElementById('history')
+const historyList = document.getElementById('history-list')
 let todayWeather = document.getElementById('todays-weather')
 const cityName = document.getElementById('city-name')
 const currentIcon = document.getElementById('weather-icon')
@@ -80,21 +81,21 @@ const displayCurrent = (data, citySearch) => {
     console.log(citySearch)
     console.log(data)
 
+    // Display current weather data
     cityName.innerHTML = data.name
-    console.log(cityName)
-
     currentIcon.src = "assets/images/" + data.weather[0].icon + ".png"
     currentIcon.alt = "Weather icon"
-    console.log(currentIcon)
-
     currentTemp.innerHTML = data.main.temp + " °F"
-    console.log(currentTemp)
-
     currentHumid.innerHTML = data.main.humidity + "%"
-    console.log(currentHumid)
-
     currentWind.innerHTML = data.wind.speed + " MPH"
-    console.log(currentWind)
+
+    // Save search to history
+    const newHistory = document.createElement('li')
+    newHistory.className = 'list-group-item'
+    newHistory.textContent = citySearch
+    newHistory.addEventListener('click', clickHandler)
+    historyList.appendChild(newHistory)
+
 }
 
 // Event listeners
