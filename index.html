@@ -12,6 +12,7 @@
     <!-- Header -->
     <header class="text-center text-light bg-dark">
         <h1>Weather Dashboard</h1>
+        <p id="time-display" ></p>
     </header>
 
     <!-- Search -->
@@ -31,17 +32,14 @@
 
             <!-- Daily Stats -->
             <div class="col-12 col-lg-9">
-                <div class="col-lg-5 card m-3 d-none bg-info" id="todays-weather">
-                    <div class="card-body">
-                        <h3 class="city-name align-middle" id="city-name" ></h3>
-                        <img id="weather-icon" alt="weather icon">
-                        <p id="dsec"></p>
+
+                        <h3 class="city-name" id="city-name" ></h3>
+                        <img id="weather-icon">
                         <p id="temp"></p>
                         <p id="humid"></p>
                         <p id="wind"></p>
                         <p id="uv"></p>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
@@ -65,5 +63,6 @@
         <p class="text-center">Have a wonderful day!</p>
     </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 </body>
 </html>

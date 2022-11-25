@@ -1,3 +1,8 @@
+// Display current date and time
+const currentTime = moment();
+const timeDisplay = document.getElementById('time-display')
+timeDisplay.textContent = currentTime.format("dddd MMMM Do, YYYY h:mm a")
+
 // HTML Elements
 const searchBtn = document.getElementById('search-button')
 const clearBtn = document.getElementById('clear-history')
@@ -5,11 +10,10 @@ const history = document.getElementById('history')
 let todayWeather = document.getElementById('todays-weather')
 const cityName = document.getElementById('city-name')
 const currentIcon = document.getElementById('weather-icon')
-const currentDesc = document.getElementById('desc')
-const todayTemp = document.getElementById('temp')
-const todayHumid = document.getElementById('humid')
-const todayWind = document.getElementById('wind')
-const todayUv = document.getElementById('uv')
+const currentTemp = document.getElementById('temp')
+const currentHumid = document.getElementById('humid')
+const currentWind = document.getElementById('wind')
+const currentUv = document.getElementById('uv')
 let fivedayHeader = document.getElementById('fiveday-header')
 
 // Search history
@@ -76,8 +80,21 @@ const displayCurrent = (data, citySearch) => {
     console.log(citySearch)
     console.log(data)
 
-    
+    cityName.innerHTML = data.name
+    console.log(cityName)
 
+    currentIcon.src = "assets/images/" + data.weather[0].icon + ".png"
+    currentIcon.alt = "Weather icon"
+    console.log(currentIcon)
+
+    currentTemp.innerHTML = data.main.temp + " °F"
+    console.log(currentTemp)
+
+    currentHumid.innerHTML = data.main.humidity + "%"
+    console.log(currentHumid)
+
+    currentWind.innerHTML = data.wind.speed + " MPH"
+    console.log(currentWind)
 }
 
 // Event listeners
