@@ -8,7 +8,6 @@ const searchBtn = document.getElementById('search-button')
 const clearBtn = document.getElementById('clear-history')
 const history = document.getElementById('history')
 const historyList = document.getElementById('history-list')
-let todayWeather = document.getElementById('todays-weather')
 const cityName = document.getElementById('city-name')
 const currentIcon = document.getElementById('weather-icon')
 const currentTemp = document.getElementById('temp')
@@ -26,19 +25,14 @@ const formHandler = (event) => {
     event.preventDefault()
     const citySearch = document.getElementById('city-search').value.trim()
 
-
     if (!citySearch) {
-
         alert('Please enter a city name')
-
     } else {
-
         getCurrent(citySearch)
         // getForecast(citySearch)
 
         cityArray.push(citySearch)
         localStorage.setItem('citySearch', JSON.stringify(cityArray))
-
     }
 }
 
@@ -46,7 +40,6 @@ const formHandler = (event) => {
 const clickHandler = (event) => {
 
     const cityHistory = event.currentTarget.textContent
-
     getCurrent(cityHistory)
     // getForecast(cityHistory)
 
@@ -70,7 +63,7 @@ const getCurrent = (citySearch) => {
             }
         })
         .catch((err) => {
-            console.log(err)
+            alert("Unable to connect to Open Weather")
         })
 
 }
@@ -78,8 +71,6 @@ const getCurrent = (citySearch) => {
 // cityUv function goes here
 
 const displayCurrent = (data, citySearch) => {
-    console.log(citySearch)
-    console.log(data)
 
     // Display current weather data
     cityName.innerHTML = data.name
@@ -89,13 +80,39 @@ const displayCurrent = (data, citySearch) => {
     currentHumid.innerHTML = data.main.humidity + "%"
     currentWind.innerHTML = data.wind.speed + " MPH"
 
-    // Save search to history
+    //Format & save search to history
     const newHistory = document.createElement('li')
     newHistory.className = 'list-group-item'
     newHistory.textContent = citySearch
     newHistory.addEventListener('click', clickHandler)
     historyList.appendChild(newHistory)
 
+    //  Use lat & lon to acquire UV index
+    const lat = data.coord.lat
+    const lon = data.coord.lon
+    searchUv(lat, lon, citySearch)
+
+}
+
+const searchUv = (lat, lon, citySearch) => {
+
+    const key = '3cc750875e9720f210c3ade16c226b21'
+    const url = `https://api.openweathermap.org/data/2.5/uvi?q=${citySearch}&appid=${key}&lat=${lat}&lon=${lon}`
+
+    fetch(url)
+        .then((res) => {
+            if (!res.ok) {
+                alert(`Error: ${res.statusText}`)
+            } else {
+                res.json()
+                    .then((data) => {
+                        currentUv.innerHTML = `${data.value} UV`
+                    })
+            }
+        })
+        .catch((err) => {
+            alert('Unable to connect to Open Weather')
+        })
 }
 
 // Event listeners

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,11 +9,12 @@
     <script src="assets/js/index.js" defer></script>
     <title>Weather Dashboard</title>
 </head>
+
 <body>
     <!-- Header -->
     <header class="text-center text-light bg-dark">
         <h1>Weather Dashboard</h1>
-        <p id="time-display" ></p>
+        <p id="time-display"></p>
     </header>
 
     <!-- Search -->
@@ -21,19 +23,20 @@
             <div class="col-12 col-lg-3">
                 <h2>Search for a City:</h2>
                 <div class="input-group mb-3">
-                    <input type="text" id="city-search" class="form-input" placeholder="Enter a city name" autofocus="true">
+                    <input type="text" id="city-search" class="form-input" placeholder="Enter a city name"
+                        autofocus="true">
                     <div class="input-group-append">
-                        <button class="btn btn-primary" id="search-button" type="button">Search</button>
+                        <button class="btn btn-primary mx-1" id="search-button" type="button">Search</button>
                     </div>
                 </div>
-                <button class="btn btn-info text-muted" id="clear-history" type="button">Clear history</button>
+                <button class="btn btn-primary my-2" id="clear-history" type="button">Clear history</button>
                 <form id="history">
                     <ul class="list-group" id="history-list"></ul>
                 </form>
             </div>
 
             <!-- Daily Stats -->
-            <div class="col-12 col-lg-9">
+            <div class="col-12 col-lg-9" id="current-weather">
                 <h3 class="city-name" id="city-name"></h3>
                 <img id="weather-icon">
                 <p id="temp"></p>
@@ -65,4 +68,5 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 </body>
+
 </html>
