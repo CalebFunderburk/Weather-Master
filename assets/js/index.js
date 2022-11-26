@@ -39,9 +39,10 @@ const formHandler = (event) => {
         getCurrent(citySearch)
         getForecast(citySearch)
 
-        cityArray.push(citySearch)
-        localStorage.setItem('citySearch', JSON.stringify(cityArray))
-    }
+        if (!citySearch === citySearch)
+            cityArray.push(citySearch)
+            localStorage.setItem('citySearch', JSON.stringify(cityArray))
+        } 
 }
 
 // Handler for clicking cities in search history
@@ -74,7 +75,7 @@ const getCurrent = (citySearch) => {
             }
         })
         .catch((err) => {
-            alert("Unable to connect to Open Weather")
+            alert('Unable to connect to Open Weather')
         }
     )
 
@@ -85,11 +86,11 @@ const displayCurrent = (data, citySearch) => {
 
     // Format & display current weather data
     cityName.innerHTML = data.name
-    currentIcon.src = "assets/images/" + data.weather[0].icon + ".png"
-    currentIcon.alt = "Weather icon"
-    currentTemp.innerHTML = data.main.temp + " °F"
-    currentHumid.innerHTML = data.main.humidity + "%"
-    currentWind.innerHTML = data.wind.speed + " MPH"
+    currentIcon.src = `assets/images/${data.weather[0].icon}.png`
+    currentIcon.alt = 'Weather icon'
+    currentTemp.innerHTML = `${data.main.temp} °F`
+    currentHumid.innerHTML = `${data.main.humidity}%`
+    currentWind.innerHTML = `${data.wind.speed} MPH`
 
     // Format & save search to history
     const newHistory = document.createElement('li')
@@ -303,36 +304,36 @@ const displayForecast = (data) => {
 
 // Remove content from page
 const removeContent = () => {
-    console.log('hello')
-    if (forecastHeader.innerHTML === '5 Day Forecast') {
-        
-        // Target all 5 day forecast elements
-        const date1 = document.getElementById('date-1')
-        const date2 = document.getElementById('date-2')
-        const date3 = document.getElementById('date-3')
-        const date4 = document.getElementById('date-4')
-        const date5 = document.getElementById('date-5')
-        const icon1 = document.getElementById('icon-1')
-        const icon2 = document.getElementById('icon-2')
-        const icon3 = document.getElementById('icon-3')
-        const icon4 = document.getElementById('icon-4')
-        const icon5 = document.getElementById('icon-5')
-        const temp1 = document.getElementById('temp-1')
-        const temp2 = document.getElementById('temp-2')
-        const temp3 = document.getElementById('temp-3')
-        const temp4 = document.getElementById('temp-4')
-        const temp5 = document.getElementById('temp-5')
-        const wind1 = document.getElementById('wind-1')
-        const wind2 = document.getElementById('wind-2')
-        const wind3 = document.getElementById('wind-3')
-        const wind4 = document.getElementById('wind-4')
-        const wind5 = document.getElementById('wind-5')
-        const humid1 = document.getElementById('humid-1')
-        const humid2 = document.getElementById('humid-2')
-        const humid3 = document.getElementById('humid-3')
-        const humid4 = document.getElementById('humid-4')
-        const humid5 = document.getElementById('humid-5')
 
+    // Target all 5 day forecast elements
+    const date1 = document.getElementById('date-1')
+    const date2 = document.getElementById('date-2')
+    const date3 = document.getElementById('date-3')
+    const date4 = document.getElementById('date-4')
+    const date5 = document.getElementById('date-5')
+    const icon1 = document.getElementById('icon-1')
+    const icon2 = document.getElementById('icon-2')
+    const icon3 = document.getElementById('icon-3')
+    const icon4 = document.getElementById('icon-4')
+    const icon5 = document.getElementById('icon-5')
+    const temp1 = document.getElementById('temp-1')
+    const temp2 = document.getElementById('temp-2')
+    const temp3 = document.getElementById('temp-3')
+    const temp4 = document.getElementById('temp-4')
+    const temp5 = document.getElementById('temp-5')
+    const wind1 = document.getElementById('wind-1')
+    const wind2 = document.getElementById('wind-2')
+    const wind3 = document.getElementById('wind-3')
+    const wind4 = document.getElementById('wind-4')
+    const wind5 = document.getElementById('wind-5')
+    const humid1 = document.getElementById('humid-1')
+    const humid2 = document.getElementById('humid-2')
+    const humid3 = document.getElementById('humid-3')
+    const humid4 = document.getElementById('humid-4')
+    const humid5 = document.getElementById('humid-5')
+
+    if (date1) {
+    
         // Remove all targeted elements from the page
         date1.remove()
         date2.remove()
@@ -359,8 +360,6 @@ const removeContent = () => {
         humid3.remove()
         humid4.remove()
         humid5.remove()
-
-        console.log('goodbye')
     }
 }
 
