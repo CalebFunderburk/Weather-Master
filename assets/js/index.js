@@ -39,10 +39,10 @@ const formHandler = (event) => {
         getCurrent(citySearch)
         getForecast(citySearch)
 
-        if (!citySearch === citySearch)
-            cityArray.push(citySearch)
-            localStorage.setItem('citySearch', JSON.stringify(cityArray))
-        } 
+        cityArray.push(citySearch)
+        localStorage.setItem('citySearch', JSON.stringify(cityArray))
+   
+   }
 }
 
 // Handler for clicking cities in search history
